@@ -1,0 +1,47 @@
+<div class="container main-container">
+    <h3>Interpolation </h3>
+    
+    <!-- <p>O numero de cliques é : {{ contatodorClique }} </p> -->
+    <!-- COlocando condições no ngClass -->
+    <p [ngClass]="{
+        'text-secondary':contatodorClique < 3,
+        'text-success':contatodorClique >= 3,
+        'text-warning':contatodorClique >= 5,
+        'text-danger':contatodorClique >= 9
+      }">O número de cliques é: {{ contatodorClique }}</p>
+
+    <br><br><br>
+    
+    <h3>Property Binding</h3>
+    <button class="btn btn-info" [disabled]="contatodorClique >=10" > Info </button>
+    <br><br>
+    <img [src]="urlImagem" height="" width="" />
+    <br><br><br><br>
+
+    <h3>Event Binding</h3>
+
+    <button class="btn btn-info"  (click)="adicionarClique()"> Clique-me </button>
+    <button class="btn btn-danger"  (click)="zerarContador()" [disabled]="contatodorClique < 10"> Zerar Contador </button>
+
+    <br><br><br><br>
+    <h3>Two-way Binding</h3>
+    <!-- Isso daqui esta dando o efeito de Two-way Binding Mas não é  esse faz uso de um metodo dentro do Componente -->
+    <input type="text" (keyup)="keyup($event)" placeholder="Digite seu nome">
+    <br>
+    <label>Seu nome é: {{ nome }} </label>
+    <br>
+    <!-- Isso daqui é o efeito de Two-way Binding -->
+    <input type="text" [ngModel]="nomeTwoWay" (ngModelChange)="nomeTwoWay = $event"  placeholder="Digite seu nome">
+    <br>
+    <label>Seu nome é: {{ nomeTwoWay }} </label>
+    <br>
+    <br>
+    <br>
+    <h3>Forma mais elegante de usar Two-way Binding</h3>
+    <!-- Banana in a box  [()]-->
+    <input type="text"  [(ngModel)]="NomeElegante" placeholder="Digite seu nome">
+    <br>
+    <label class="{{NomeElegante}}" > Seu nome é : {{NomeElegante}} </label>
+    <br>
+    <label [ngClass]="NomeElegante" > Seu nome é : {{NomeElegante}} usando [ngClass] </label>
+</div>
